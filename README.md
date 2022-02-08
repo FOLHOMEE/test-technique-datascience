@@ -1,57 +1,62 @@
 # test-technique-datascience
 
-Il s'agit du test technique la data science chez Folhomee. Il est conçu pour tester vos compétences en conception d'API, en scraping Web, en architecture cloud et en apprentissage automatique en général.
+Il s'agit du test technique la data science chez Folhomee. Il consiste en 5 questions et un petit challenge. Pour chacune vous devez implémenter une solution en utilisant si besoin le langage de votre choix. Pour les questions plus ouvertes, merci d'y répondre dans un fichier markdown
 
-Nous allons chercher à analyser les données fournies par velib
+Votre rendu consitera en un repo github **privé** auquel vous inviterez notre CTO [Matthieu Rondeau](https://github.com/milanito).
 
-## Livrables
+Une fois que vous aurez fini, vous devrez envoyer [un email](mailto:matthieu@folhomee.fr) à notre CTO en indiquant que vous avez fini et en donnant vos disponibilités pour le debrief.
 
-Les livrables minimum sont les suivants :
+Si vous avez des questions ou des remarques, vous pouvez évidemment envoyer un mail.
 
-- Un repo github privé auquel vous aurez donné accès au CTO de Folhomee (username github : milanito)
-- Un ensemble de dossiers/fichiers selon une nomenclature claires
+Bonne chance !
 
-Pour le reste, vous êtes libre de vos choix technique (base de donnée, etc ...) quand il n'est pas explicitement dit dans l'exercice le choix à faire. Soyez prêt à expliquer votre code et pourquoi vous avez pris certaines des décisions que vous avez prises.
+## Question #1
 
-## Récupération des flux
+Comment expliquer un test A/B à un ingénieur qui n'a aucune formation en statistiques ?
 
-La liste des flux est disponible ici :
+## Question #2
 
-- https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/gbfs.json
+Comment s'assurer que vous n'analysez pas quelque chose qui finit par ne plus avoir de sens ?
 
-Les deux qui nous intéressent sont ceux sur les informations des stations et sur le status de ces dernières :
+## Question #3
 
-- https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_information.json
-- https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_status.json
+Comment suggérer à un franchisé où ouvrir un nouveau magasin ?
 
-## Exercice
+## Question #4
 
-### Récupération des données
+Vous appelez 2 Uber et 3 Chauffeur Privé. Si le temps que chacun d'eux met pour vous rejoindre est identique, quelle est la probabilité que tous les Chauffeur Privé arrivent en premier ? Quelle est la probabilité que tous les Uber arrivent en premier ?
 
-Concevez un système pour :
-- Lire les données de tous les flux (en temps réel ?)
-- Stocker dans une base de données
+## Question #5
 
-Il vous sera demandé une description de la conception qui doit inclure :
+Étant donné un tableau d'entiers, renvoyer les indices des deux nombres tels que leur somme atteigne une cible spécifique.
 
-- La stack technologique
-- La méthode de collecte et de traitement des données
-- L'infrastructure cloud utilisée (si c'est le cas)
+Vous pouvez supposer que chaque entrée a exactement une solution, et vous ne pouvez pas utiliser deux fois le même élément.
 
-Les composants à développer sont le scraping et le stockage Web, ainsi qu'un point de terminaison / hotspots d'API qui accepte les paramètres
+Exemple :
 
-> Soyez simple sur la réalisation, le but n'est pas de prendre trop de temps mais de comprendre votre manière de faire
+```
+Étant donné nums = [2, 7, 11, 15], cible = 18,
+nums[1] + nums[2] = 7 + 11 = 18, retour [1, 2].
+```
 
-### Détermination des points chauds
+## Challenge
 
-Déterminez les points chauds : les stations les plus encombrées de vélos
+Vous êtes libre d'utiliser internet et toute autre bibliothèque.
 
-> indice: vous devez diviser la carte en hexagones égaux de 75 mètres pour regrouper les coordonnées
+Fichier de données : [data/cruise_ship_info.csv](./data/cruise_ship_info.csv)
 
-## API de lecture
+### Objectif
 
-Ecrivez une API (simple) pour pouvoir récupérer les données qui comprend une route qui accepte comme parametre une date
+Construire un régresseur qui recommande la taille de "l'équipage" pour les acheteurs potentiels de navires. Veuillez suivre les étapes suivantes
 
-Un exemple de réponse pour ce point final pourrait être une liste de centres hexagonaux (lat / long) et leur poids (par rapport aux autres) en termes de degré d'encombrement pour le jour donné.
-
-> Soyez simple sur cette partie
+- Lire le fichier et afficher les colonnes.
+- Calculez les statistiques de base des données (nombre, moyenne, std, etc.), examinez les données et énoncez vos observations.
+- Sélectionnez les colonnes qui seront probablement importantes pour prédire la taille de l'"équipage".
+- Si vous avez supprimé des colonnes, expliquez pourquoi vous les avez supprimées.
+- Utilisez un *one-hot encoding* pour les caractéristiques catégorielles.
+- Créez des ensembles d'entraînement et de test (utilisez 60 % des données pour l'entraînement et le rappel pour le test).
+- Construisez un modèle d'apprentissage automatique pour prédire la taille de l'" équipage ".
+- Calculez le coefficient de corrélation de Pearson pour l'ensemble de formation et les ensembles de données de test.
+- Décrivez les hyperparamètres de votre modèle et comment vous les modifieriez pour améliorer les performances du modèle.
+- Qu'est-ce que la régularisation ? Quel est le paramètre de régularisation de votre modèle ?
+- Tracez la valeur du paramètre de régularisation en fonction de la corrélation de Pearson pour les ensembles de test et d'apprentissage, et voyez si votre modèle présente un problème de biais ou de variance.
